@@ -1,0 +1,21 @@
+name: PushGitEIT
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Mirror + trigger CI
+      uses: SvanBoxel/gitlab-mirror-and-ci-action@master
+      with:
+        args: "https://giteit.udp.cl/docencia/website"
+      env:
+        FOLLOW_TAGS: "false"
+        FORCE_PUSH: "true"
+        GITLAB_HOSTNAME: "giteit.udp.cl"
+        GITLAB_USERNAME: "malba"
+        GITLAB_PASSWORD: ${{ secrets.token }}
+        GITLAB_PROJECT_ID: "133" 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
