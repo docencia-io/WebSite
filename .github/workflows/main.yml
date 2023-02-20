@@ -13,7 +13,7 @@ jobs:
         args: "https://giteit.udp.cl/docencia/website"
       env:
         FOLLOW_TAGS: "false"
-        FORCE_PUSH: "false"
+        FORCE_PUSH: "true"
         GITLAB_HOSTNAME: "giteit.udp.cl"
         GITLAB_USERNAME: "malba"
         GITLAB_PASSWORD: ${{ secrets.token }}
