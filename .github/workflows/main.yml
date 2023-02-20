@@ -1,5 +1,7 @@
 name: PushGitEIT
-
+on:
+  push:
+    branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,6 +16,6 @@ jobs:
         FORCE_PUSH: "false"
         GITLAB_HOSTNAME: "giteit.udp.cl"
         GITLAB_USERNAME: "malba"
-        GITLAB_PASSWORD: ${{ secrets.token }} // Generate here: https://gitlab.com/profile/personal_access_tokens
-        GITLAB_PROJECT_ID: "133" // https://gitlab.com/<namespace>/<repository>/edit
+        GITLAB_PASSWORD: ${{ secrets.token }}
+        GITLAB_PROJECT_ID: "133" 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
