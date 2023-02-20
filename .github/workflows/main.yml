@@ -1,7 +1,7 @@
 name: PushGitEIT
 on:
   push:
-    branches: [ main22 ]
+    branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
