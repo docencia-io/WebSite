@@ -20,5 +20,5 @@ jobs:
         echo Starting to push repo to gitlab
         git config user.name "DOCENCIA"
         git config user.email "docencia@mmae.cl"
-        git remote set-url origin "https://oauth2:${token}@gitlab.com/chuang_/jskara-web.git"
+        git remote set-url origin "https://malba:${token}@giteit.udp.cl/docencia/website.git"
         git push origin main
