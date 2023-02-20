@@ -1,24 +1,19 @@
 name: PushGitEIT
 
-on:
-  push:
-    branches: [ main ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-      with: 
-        fetch-depth: 0
-      env: 
-        token: ${{ secrets.GITLAB_ACCESS_TOKEN }}
-
-    - name: Push To Gitlab
-      run: |
-        echo Starting to push repo to gitlab
-        git config user.name "DOCENCIA"
-        git config user.email "docencia@mmae.cl"
-        git remote set-url origin "https://malba:${token}@giteit.udp.cl/docencia/website.git"
-        git push origin main
+    - uses: actions/checkout@v1
+    - name: Mirror + trigger CI
+      uses: SvanBoxel/gitlab-mirror-and-ci-action@master
+      with:
+        args: "https://giteit.udp.cl/docencia/website"
+      env:
+        FOLLOW_TAGS: "false"
+        FORCE_PUSH: "false"
+        GITLAB_HOSTNAME: "giteit.udp.cl"
+        GITLAB_USERNAME: "malba"
+        GITLAB_PASSWORD: ${{ secrets.token }} // Generate here: https://gitlab.com/profile/personal_access_tokens
+        GITLAB_PROJECT_ID: "133" // https://gitlab.com/<namespace>/<repository>/edit
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
