@@ -1,4 +1,4 @@
-name: PushGitlab
+name: PushGitEIT
 
 on:
   push:
